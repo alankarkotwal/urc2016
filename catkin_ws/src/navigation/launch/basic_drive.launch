@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="navigation" name="basic_drive" type="basic_drive" output="screen" required="true" />
+	<node pkg="navigation" name="nav_command" type="nav_command" output="screen" required="true" />
+	<node pkg="rosserial_python" name="rosserialpy" type="serial_node.py" required="false" args="/dev/ttyACM1" />
+</launch>

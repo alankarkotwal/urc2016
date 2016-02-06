@@ -5,7 +5,7 @@ ros::Publisher ard_publisher;
 
 void navCallback(const std_msgs::Float64::ConstPtr& msg) {
 
-	ROS_INFO("You entered this: %d", msg->data);
+	ROS_INFO("You entered this: %f", msg->data);
 	std_msgs::Float64 ard_msg;
 	ard_msg.data = msg->data;
 
