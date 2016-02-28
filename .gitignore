@@ -33,3 +33,4 @@ catkin_ws/devel
 
 # Vim swaps
 *.swp
+*~
