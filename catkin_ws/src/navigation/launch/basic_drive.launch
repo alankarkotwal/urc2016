@@ -2,5 +2,5 @@
 	<node pkg="navigation" name="navigation_node" type="navigation_node" output="screen" required="true" />
 	<node pkg="navigation" name="mobility_driver" type="mobility_driver" output="screen" required="true" />
 	<node pkg="joy" name="joy_node" type="joy_node" output="screen" required="true" />
-	<node pkg="rosserial_python" name="rosserialpy" type="serial_node.py" required="false" args="/dev/ttyACM0" />
+	<node pkg="rosserial_python" name="rosserialpy" type="serial_node.py" required="false" args="/dev/ttyACM1" />
 </launch>
