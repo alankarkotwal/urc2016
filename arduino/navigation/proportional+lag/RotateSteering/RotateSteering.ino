@@ -142,13 +142,17 @@ void gotoAngle(int target){
   float k=0.13;
   float vel=k*c;
   if(enc1pos<ne-50)
-  {  vel = vel +10;
+  { c=(ne-50)-enc1pos;
+    vel=k*c;
+    vel = vel +10;
     roboclaw1.BackwardM1(address1,vel);
     delay(100);
    terminal.println(enc1pos); 
   }
  else if(enc1pos>ne+50)                   // +5 encoder reading is the tolerance
 {
+  c=(ne+50)-enc1pos;
+    vel=k*c;
   vel = vel - 10;
   roboclaw1.ForwardM1(address1,-vel);
   delay(100);
@@ -171,13 +175,16 @@ else
   float k=0.13;
   float vel=k*c;
   if(enc2pos<ne-50)
-  { vel = vel + 10;
+  { c=(ne-50)-enc2pos;
+    vel=k*c;
+    vel = vel + 10;
     roboclaw1.ForwardM2(address1,vel);
     delay(100);
    terminal.println(enc2pos); 
   }
  else if(enc2pos>ne+50)                   // +5 encoder reading is the tolerance
-{
+{c=(ne+50)-enc2pos;
+    vel=k*c;
   vel = vel - 10;
   roboclaw1.BackwardM2(address1,-vel);
   delay(100);
@@ -193,26 +200,30 @@ else
   
 if(select == 2){
     int enc1pos = roboclaw2.ReadEncM1(address2, &status1, &valid1);
-        int theta=targetAngle;//type in the value for the theta...it could be between -90 and +90
+        int theta=+targetAngle;//type in the value for the theta...it could be between -90 and +90
   int ne=5.34*theta;
   float c=ne-enc1pos;
   float k=0.13;
   float vel=k*c;
-  if(enc1pos<ne-50)
-  {vel = vel + 15;
+  if(enc1pos<ne-100)
+  {c=(ne-100)-enc1pos;
+  vel=k*c;
+    vel = vel+10;
     roboclaw2.BackwardM1(address2,vel);
     delay(100);
   terminal.println(enc1pos); 
   }
- else if(enc1pos>ne+50)                   // +5 encoder reading is the tolerance
-{ vel = vel - 15;
+ else if(enc1pos>ne+100)                   // +5 encoder reading is the tolerance
+{ c=(ne+100)-enc1pos;
+vel=k*c;
+  vel = vel-10;
   roboclaw2.ForwardM1(address2,-vel);
   delay(100);
   terminal.println(enc1pos);
 } 
 else
 {
-  roboclaw2.ForwardM1(address2,0);
+  roboclaw2.BackwardM1(address2,0);
   delay(100);
   terminal.println(enc1pos);
 }
@@ -223,17 +234,21 @@ if(select == 2){
         int theta=-targetAngle;//type in the value for the theta...it could be between -90 and +90
   int ne=5.34*theta;
   float c=ne-enc2pos;
-  float k=0.16;
+  float k=0.11;
   float vel=k*c;
-  if(enc2pos<ne-50)
-  {vel = vel +10;
-    roboclaw2.ForwardM2(address2,vel);
+  if(enc2pos<ne-100)
+  {c=(ne-100)-enc2pos;
+  vel=k*c;
+    vel = vel+10;
+    roboclaw2.BackwardM2(address2,vel);
     delay(100);
    terminal.println(enc2pos); 
   }
- else if(enc2pos>ne+50)                   // +5 encoder reading is the tolerance
-{vel = vel -10;
-  roboclaw2.BackwardM2(address2,-vel);
+ else if(enc2pos>ne+100)                   // +5 encoder reading is the tolerance
+{c=(ne+100)-enc2pos;
+  vel=k*c;
+  vel = vel-10 ;
+  roboclaw2.ForwardM2(address2,-vel);
   delay(100);
   terminal.println(enc2pos);
 } 
