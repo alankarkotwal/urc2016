@@ -13,13 +13,13 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy) {
 	geometry_msgs::Twist ard_msg;
 
 	geometry_msgs :: Vector3 linear;
-	linear.x = joy->axes[1]*90;
+	linear.x = joy->axes[1]*10;
 	linear.y = 0;
 	linear.z = 0;
 	ard_msg.linear = linear;
 
         geometry_msgs :: Vector3 angular;
-	angular.x = joy->axes[2]*45;
+	angular.x = joy->axes[2]*5;
 	angular.y = 0;
 	angular.z = 0;
 	ard_msg.angular = angular;

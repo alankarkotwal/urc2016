@@ -1,0 +1,10 @@
+(cl:defpackage navigation-srv
+  (:use )
+  (:export
+   "SYSTEMPARAMETER"
+   "<SYSTEMPARAMETER-REQUEST>"
+   "SYSTEMPARAMETER-REQUEST"
+   "<SYSTEMPARAMETER-RESPONSE>"
+   "SYSTEMPARAMETER-RESPONSE"
+  ))
+
