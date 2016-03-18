@@ -51,11 +51,12 @@ find_package(catkin REQUIRED COMPONENTS
   )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
+ add_service_files(
+   FILES
+   systemparameter.srv
 #   Service1.srv
 #   Service2.srv
-# )
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -194,3 +195,14 @@ target_link_libraries(mobility_driver ${catkin_LIBRARIES})
 
 add_executable(navigation_node src/navigation_node.cpp)
 target_link_libraries(navigation_node ${catkin_LIBRARIES})
+
+
+
+##
+add_executable(data_server src/data_server.cpp)
+target_link_libraries(data_server ${catkin_LIBRARIES})
+add_dependencies(data_server navigation_gencpp)
+
+add_executable(data_client src/data_client.cpp)
+target_link_libraries(data_client ${catkin_LIBRARIES})
+add_dependencies(data_client navigation_gencpp)
